@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/stationsListFragment"
+        android:icon="@drawable/home_24px"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/papersFragment"
+        android:icon="@drawable/papers_24px"
+        android:title="@string/papiers" />
+    <item
+        android:id="@+id/repairsFragment"
+        android:icon="@drawable/car_repair_24px"
+        android:title="@string/entretiens" />
+    <item
+        android:id="@+id/fuelFragment"
+        android:icon="@drawable/carburant_24px"
+        android:title="@string/carburant"/>
+</menu>

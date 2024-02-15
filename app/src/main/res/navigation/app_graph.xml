@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_graph"
+    app:startDestination="@id/stationsListFragment">
+
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="ma.ettazarini.carsdespenses.ui.fragments.fuel.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add_fuel" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="ma.ettazarini.carsdespenses.ui.fragments.fuel.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details">
+        <action
+            android:id="@+id/action_detailsFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="ma.ettazarini.carsdespenses.ui.fragments.fuel.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" />
+    <fragment
+        android:id="@+id/fuelFragment"
+        android:name="ma.ettazarini.carsdespenses.ui.fragments.fuel.FuelFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_fuel_list">
+        <action
+            android:id="@+id/action_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+    </fragment>
+    <fragment android:id="@+id/placeholder">
+        <action
+            android:id="@+id/action_placeholder_to_listFragment"
+            app:destination="@id/fuelFragment" />
+        <action
+            android:id="@+id/action_placeholder_to_repairsFragment"
+            app:destination="@id/repairsFragment" />
+        <action
+            android:id="@+id/action_placeholder_to_papersFragment"
+            app:destination="@id/papersFragment" />
+        <action
+            android:id="@+id/action_placeholder_to_stationsListFragment"
+            app:destination="@id/stationsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/papersFragment"
+        android:name="ma.ettazarini.carsdespenses.ui.fragments.paper.PapersFragment"
+        android:label="fragment_papers"
+        tools:layout="@layout/fragment_papers" />
+    <fragment
+        android:id="@+id/repairsFragment"
+        android:name="ma.ettazarini.carsdespenses.ui.fragments.repair.RepairsFragment"
+        android:label="fragment_repairs"
+        tools:layout="@layout/fragment_repairs" />
+    <fragment
+        android:id="@+id/stationsListFragment"
+        android:name="ma.ettazarini.carsdespenses.ui.fragments.station.StationsListFragment"
+        android:label="fragment_stations_list"
+        tools:layout="@layout/fragment_stations_list">
+        <action
+            android:id="@+id/action_stationsListFragment_to_addStationFragment"
+            app:destination="@id/addStationFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addStationFragment"
+        android:name="ma.ettazarini.carsdespenses.ui.fragments.station.AddStationFragment"
+        android:label="fragment_add_station"
+        tools:layout="@layout/fragment_add_station" />
+</navigation>
