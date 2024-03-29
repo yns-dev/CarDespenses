@@ -1,5 +1,6 @@
 package ma.ettazarini.carsdespenses.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -19,5 +20,5 @@ public interface StationDAO {
     @Query("DELETE FROM stations WHERE id=:id")
     void delete(int id);
     @Query("SELECT * FROM stations")
-    List<Station> getAll();
+    LiveData<List<Station>> getAll();
 }

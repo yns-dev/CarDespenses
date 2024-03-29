@@ -3,42 +3,41 @@ package ma.ettazarini.carsdespenses.ui.fragments.station;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import ma.ettazarini.carsdespenses.R;
+import ma.ettazarini.carsdespenses.data.entities.Station;
 import ma.ettazarini.carsdespenses.databinding.FragmentAddStationBinding;
+import ma.ettazarini.carsdespenses.viewmodels.StationViewModel;
 
-public class AddStationFragment extends DialogFragment {
+public class AddStationFragment extends DialogFragment{
     FragmentAddStationBinding binding;
     public static String TAG = "AddStationFragment";
+    StationViewModel viewModel;
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        return new AlertDialog.Builder(requireContext()).setView(R.layout.fragment_add_station)
-                .setTitle("Ajouter une station")
-                /*.setPositiveButton("Valider", null )
-                .setNegativeButton("Annuler", null)*/
-                .create();
+        Station station = AddStationFragmentArgs.fromBundle(getArguments()).getMyStation();
+        viewModel = new ViewModelProvider(requireActivity()).get(StationViewModel.class);
+        viewModel.setStation(station);
+        binding = FragmentAddStationBinding
+                .inflate(getLayoutInflater());
+        binding.setLifecycleOwner(requireActivity());
+        binding.setStationViewModel(viewModel);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setPositiveButton("Valider", (dialog, n)-> {
+            if(station.getId()!=0)
+                viewModel.updateStation();
+            else
+                viewModel.addStation();
+        });
+        builder.setView(binding.getRoot());
+        builder.setTitle("Ajouter une station");
+        return builder.create();
     }
 
-   @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = FragmentAddStationBinding.inflate(getLayoutInflater());
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return binding.getRoot();
-    }
 }

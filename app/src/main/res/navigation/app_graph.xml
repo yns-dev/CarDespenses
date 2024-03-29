@@ -66,12 +66,16 @@
         android:label="fragment_stations_list"
         tools:layout="@layout/fragment_stations_list">
         <action
-            android:id="@+id/action_stationsListFragment_to_addStationFragment"
-            app:destination="@id/addStationFragment" />
+            android:id="@+id/action_to_addStationFragment"
+            app:destination="@id/addStationFragment"/>
     </fragment>
     <dialog
         android:id="@+id/addStationFragment"
         android:name="ma.ettazarini.carsdespenses.ui.fragments.station.AddStationFragment"
         android:label="fragment_add_station"
-        tools:layout="@layout/fragment_add_station" />
+        tools:layout="@layout/fragment_add_station" >
+        <argument
+            android:name="myStation"
+            app:argType="ma.ettazarini.carsdespenses.data.entities.Station" />
+    </dialog>
 </navigation>

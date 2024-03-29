@@ -6,4 +6,5 @@
     <string name="papiers">Papiers</string>
     <string name="entretiens">Entretiens</string>
     <string name="carburant">Carburant</string>
+    <string name="add_station">Ajouter une station</string>
 </resources>
